@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  画面が縦に長くなっても全項目をスクロールして確認できるようにする。  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+    <!--  すべての画面部品を上から下へ縦方向に並べる。  -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <!--  アプリの目的を示す画面タイトルである。  -->
+        <!--  監視開始、停止、権限エラーなど現在の全体状態を表示する。  -->
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/monitoring_stopped"
+            android:textColorLink="#9B3232"
+            android:textSize="16sp" />
+        <!--  監視開始ボタンと監視停止ボタンを横並びにする入れ物である。  -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal">
+            <!--  利用者がタップするとMainActivityのrequestPermissionsAndStart()が呼ばれる。  -->
+            <!--  権限確認後、最終的にstartMonitoring()がBLEと重力センサーの監視を開始する。  -->
+            <Button android:id="@+id/startButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/start_monitoring"/>
+            <!--  利用者がタップするとMainActivityのstopMonitoring()が呼ばれる。  -->
+            <!--  BLEスキャン、センサー監視、定期判定、発動中の機能を停止する。  -->
+            <Button android:id="@+id/stopButton" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:layout_weight="1" android:text="@string/stop_monitoring"/>
+        </LinearLayout>
+        <!--  利用者がタップするとclearActivationHistory()が呼ばれ、保存済み発動履歴を消去する。  -->
+        <!--  指定UUID、Major、Minorの対象iBeaconを直近8秒以内に受信したかを表示する。  -->
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/clear_history" />
+
+        <TextView android:id="@+id/targetBeaconTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="対象ビーコン: 未受信" android:textSize="17sp" android:textStyle="bold"/>
+        <!--  直近5件の対象ビーコンRSSIから求めた中央値を表示する。  -->
+        <TextView android:id="@+id/rssiTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="RSSI中央値: -- dBm" android:textSize="16sp"/>
+        <!--  RSSI中央値と継続時間から判定した接近または離脱状態を表示する。  -->
+        <TextView android:id="@+id/proximityStateTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="接近状態: 離脱" android:textSize="16sp"/>
+        <!--  重力センサーまたは加速度センサーから得た現在のZ軸値を表示する。  -->
+        <TextView android:id="@+id/gravityTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="重力センサーZ: -- m/s²" android:textSize="16sp"/>
+        <!--  Z軸値と継続時間から判定した端末の伏せ状態を表示する。  -->
+        <TextView android:id="@+id/faceDownStateTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="端末状態: 伏せられていない" android:textSize="16sp"/>
+        <!--  接近中かつ伏せ状態のときに発動中と表示し、背景色を緑色へ変更する。  -->
+        <TextView android:id="@+id/featureStateTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:background="#E0E0E0" android:gravity="center" android:padding="16dp" android:text="機能状態: 停止中" android:textSize="20sp" android:textStyle="bold"/>
+        <!--  現在または直近の発動が始まった日時を表示する。  -->
+        <TextView android:id="@+id/lastActivationTimeTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="直近の発動開始: まだありません" android:textSize="16sp"/>
+        <!--  発動中は現在の継続時間、停止後は直近の発動時間を表示する。  -->
+        <TextView android:id="@+id/activationDurationTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="直近の発動時間: 00:00.0" android:textSize="18sp" android:textStyle="bold"/>
+        <!--  判定しきい値、対象ビーコン、R1 Beaconの設定用広告などの診断情報を表示する。  -->
+        <TextView
+            android:id="@+id/detailTextView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#F2F2F2"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:text="監視を開始してください。"
+            android:textIsSelectable="true"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>

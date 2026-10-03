@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  画面やアプリ情報で使用する文字列を一元管理する。  -->
+<resources>
+    <!--  ホーム画面とアプリ情報に表示するアプリ名である。  -->
+    <string name="app_name">Beacon Scanner</string>
+    <!--  画面上部に表示するタイトルである。  -->
+    <string name="screen_title">iBeacon・伏せ状態判定</string>
+    <!--  起動直後の状態表示である。  -->
+    <string name="monitoring_stopped">監視停止中</string>
+    <!--  BLEスキャンと姿勢監視を開始するボタンの表示文字である。  -->
+    <string name="start_monitoring">監視開始</string>
+    <!--  BLEスキャンと姿勢監視を停止するボタンの表示文字である。  -->
+    <string name="stop_monitoring">監視停止</string>
+    <!--  保存済みの発動履歴を消去するボタンの表示文字である。  -->
+    <string name="clear_history">発動履歴を消去</string>
+</resources>

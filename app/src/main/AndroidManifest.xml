@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  アプリが必要とする権限、ハードウェア、画面をAndroidへ宣言する。  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  このアプリがBluetooth Low Energyを必須機能として使用することを宣言する。  -->
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <!--  Android 11以前で基本Bluetooth機能を利用するための旧権限である。  -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30"/>
+    <!--  Android 11以前でBluetooth探索を行うための旧権限である。  -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30"/>
+    <!--  Android 12以降でBLE広告をスキャンするための権限である。  -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+    <!--  Android 12以降でBluetoothアダプターや機器情報へアクセスするための権限である。  -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <!--  FINEと同時に要求する、おおよその位置情報権限である。  -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--  BLEスキャン結果を近接判定に使用するための正確な位置情報権限である。  -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--  アプリ全体に共通する設定を宣言する。  -->
+    <application android:allowBackup="true" android:dataExtractionRules="@xml/data_extraction_rules" android:fullBackupContent="@xml/backup_rules" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/Theme.BeaconScanner">
+        <!--  アプリのメイン画面となるMainActivityを宣言する。  -->
+        <!--  screenOrientationをportraitにして、端末を動かしても画面を縦向きに固定する。  -->
+        <activity android:name=".MainActivity" android:exported="true" android:screenOrientation="portrait">
+            <!--  ホーム画面のアプリアイコンからMainActivityを起動できるようにする。  -->
+            <intent-filter>
+                <!--  このActivityがアプリの主たる起動入口であることを示す。  -->
+                <action android:name="android.intent.action.MAIN"/>
+                <!--  ホーム画面のランチャー一覧に表示することを示す。  -->
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

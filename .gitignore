@@ -1,0 +1,20 @@
+# Unity の自動生成・キャッシュファイル（追跡不要）
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+MemoryCaptures/
+
+# Visual Studio / IDE 関連
+*.csproj
+*.sln
+*.unityproj
+.vs/
+.vscode/
+
+# OS の固有ファイル
+.DS_Store
+Thumbs.db
